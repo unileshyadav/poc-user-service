@@ -1,0 +1,38 @@
+api: /v1/runner/{project}/services/{id}/{version}
+meta:
+  id: user
+  project: unotech
+  version: v1
+spec:
+  affinity: []
+  labels: {}
+  scale:
+    concurrency: 25
+    maxReplicas: 100
+    minReplicas: 1
+    mode: per-second
+    replicas: 1
+  tasks:
+  - docker:
+      cmd: []
+      image: unofel/unotech-user:v1
+      imagePullPolicy: pull-if-not-exists
+      secret: ""
+    env: {}
+    id: user
+    ports:
+    - name: http
+      port: 8282
+      protocol: http
+    resources:
+      cpu: 1000
+      memory: 2048
+    runtime: image
+    secrets: []
+  upstreams:
+  - projectId: unotech
+    service: '*'
+  whitelists:
+  - projectId: unotech
+    service: 'organization'
+type: service
