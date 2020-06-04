@@ -34,5 +34,5 @@ spec:
     service: '*'
   whitelists:
   - projectId: unotech
-    service: 'organization'
+    service: '*'
 type: service
