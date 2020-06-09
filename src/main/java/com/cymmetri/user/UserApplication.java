@@ -23,12 +23,18 @@ import com.cymmetri.user.config.principal.PrincipalContextListener;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 @SpringBootApplication
+@EnableOAuth2Sso
+@EnableFeignClients
 @Import({ SwaggerConfig.class })
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class UserApplication {
 
 	public static void main(String[] args) {
